@@ -1,0 +1,64 @@
+% Language settings
+\usepackage[ngerman,english]{babel}
+\selectlanguage{ngerman}
+
+% Page layout
+\usepackage[a4paper,left=4cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+
+% Font
+\usepackage{fontspec}
+\setmainfont{Arial}[
+	Path=/System/Library/Fonts/Supplemental/,
+	Extension=.ttf,
+	UprightFont=*,
+	BoldFont=* Bold,
+	ItalicFont=* Italic,
+	BoldItalicFont=* Bold Italic
+]
+
+% Line spacing similar to thesis templates
+\usepackage{setspace}
+\setstretch{1.5}
+
+% No indent at the beginning of a paragraph
+\setlength{\parindent}{0pt}
+
+% Paragraph spacing
+\setlength{\parskip}{6pt}
+
+% Graphics, tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage{svg}
+\usepackage{amssymb}
+
+% Hyperlinks in PDF
+\usepackage[hidelinks]{hyperref}
+% \usepackage{hyperref}
+
+% Chapter-Heading levels
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+% Fonts for Chapter Headings
+\setkomafont{chapter}{\bfseries\fontsize{14}{18}\selectfont}
+\setkomafont{section}{\bfseries\fontsize{13}{16}\selectfont}
+\setkomafont{subsection}{\bfseries\fontsize{11}{14}\selectfont}
+
+\RedeclareSectionCommand[
+	beforeskip=0pt,
+	afterskip=0pt
+]{chapter}
+
+\RedeclareSectionCommand[
+	beforeskip=10pt,
+	afterskip=0pt
+]{section}
+
+\RedeclareSectionCommand[
+	beforeskip=10pt,
+	afterskip=6pt
+]{subsection}

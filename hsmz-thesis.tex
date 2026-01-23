@@ -5,3 +5,28 @@
 %
 % @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
 %
+
+\documentclass[         % Document setup:
+  11pt,                 %   - 11pt font size
+  a4paper,              %   - A4 paper dimensions
+  oneside               %   - one-sided print
+]{scrreprt}
+
+\input{config/settings.tex}
+\input{config/metadata.tex}
+
+\begin{document}
+
+% Frontmatter
+\pagenumbering{gobble}
+\input{frontmatter/thesis/titlepage.tex}
+\cleardoublepage
+
+\input{frontmatter/thesis/declaration.tex}
+\cleardoublepage
+
+\input{frontmatter/thesis/abstract.tex}
+\cleardoublepage
+
+
+\end{document}
