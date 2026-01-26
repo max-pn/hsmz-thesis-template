@@ -1,20 +1,24 @@
+%
+% @file           settings.tex 
+% @description    Shared configuration file for thesis and exposé pdf. 
+%
+% @usage          Update all todo's and note's to your liking and compile to view pdf.
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
 % Language settings
-\usepackage[ngerman,english]{babel}
+\usepackage[english,ngerman]{babel}
 \selectlanguage{ngerman}
+\usepackage[autostyle=true]{csquotes}
 
 % Page layout
 \usepackage[a4paper,left=4cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 
 % Font
 \usepackage{fontspec}
-\setmainfont{Arial}[
-	Path=/System/Library/Fonts/Supplemental/,
-	Extension=.ttf,
-	UprightFont=*,
-	BoldFont=* Bold,
-	ItalicFont=* Italic,
-	BoldItalicFont=* Bold Italic
-]
+\setmainfont{Arial}
+\setsansfont{Arial}
 
 % Line spacing similar to thesis templates
 \usepackage{setspace}
@@ -26,8 +30,12 @@
 % Paragraph spacing
 \setlength{\parskip}{6pt}
 
+% Macros
+\usepackage{xparse}
+
 % Graphics, tables
 \usepackage{graphicx}
+\usepackage{caption}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
@@ -45,9 +53,11 @@
 
 % Fonts for Chapter Headings
 \setkomafont{chapter}{\bfseries\fontsize{14}{18}\selectfont}
+\setkomafont{chapterprefix}{\bfseries\fontsize{14}{18}\selectfont}
 \setkomafont{section}{\bfseries\fontsize{13}{16}\selectfont}
 \setkomafont{subsection}{\bfseries\fontsize{11}{14}\selectfont}
 
+% Spacing for Chapter Headings
 \RedeclareSectionCommand[
 	beforeskip=0pt,
 	afterskip=0pt
@@ -62,3 +72,107 @@
 	beforeskip=10pt,
 	afterskip=6pt
 ]{subsection}
+
+% Table of Contents
+\usepackage{tocloft}
+
+\newcommand*\TOCTightLineLeaderFill{\leaders\hbox{.\kern0.08em}\hfill}
+
+\DeclareTOCStyleEntry[
+	beforeskip=10pt,
+	linefill=\TOCTightLineLeaderFill,
+	entryformat=\normalfont,
+	pagenumberformat=\normalfont
+]{tocline}{chapter}
+
+\DeclareTOCStyleEntry[
+	beforeskip=10pt,
+	linefill=\TOCTightLineLeaderFill,
+	entryformat=\normalfont,
+	pagenumberformat=\normalfont
+]{tocline}{section}
+
+\DeclareTOCStyleEntry[
+	beforeskip=10pt,
+	linefill=\TOCTightLineLeaderFill,
+	entryformat=\normalfont,
+	pagenumberformat=\normalfont
+]{tocline}{subsection}
+
+% List of Figures
+\newcommand*\lofnumberformat[1]{\normalfont Abbildung~#1}
+\DeclareTOCStyleEntry[
+	indent=0pt,
+	dynnumwidth,
+	entrynumberformat=\lofnumberformat,
+	entryformat=\itshape,
+	pagenumberformat=\normalfont,
+	linefill=\TOCTightLineLeaderFill
+]{tocline}{figure}
+
+% Figures
+\input{config/image.tex}
+
+\renewcommand{\thefigure}{\arabic{figure}} % global figure numbering, not chapter-wise
+
+% List of Tables
+\newcommand*\lotnumberformat[1]{\normalfont Tabelle~#1}
+\DeclareTOCStyleEntry[
+	indent=0pt,
+	dynnumwidth,
+	entrynumberformat=\lotnumberformat,
+	entryformat=\itshape,
+	pagenumberformat=\normalfont,
+	linefill=\TOCTightLineLeaderFill
+]{tocline}{table}
+
+% Tables
+\input{config/table.tex}
+
+\renewcommand{\thetable}{\arabic{table}} % global table numbering, not chapter-wise
+
+% Acronyms & Glossary
+\usepackage[
+	acronym,
+	nonumberlist
+]{glossaries}
+\makeglossaries
+\usepackage{glossary-longragged}
+\usepackage{longtable}
+
+\newglossarystyle{hsmz-glossary}{                                   % custom style for glossaries
+	\setglossarystyle{longragged}
+	\renewcommand*{\glsgroupskip}{}                                   % - no grouping in glossaries
+	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}      % - no preamble for glossaries
+	\renewcommand*{\glossarysection}[2][]{}                           % - no chapter headings for glossaries 
+	\renewcommand*{\glspostdescription}{}                             % - no punctuation after glossary descriptions
+	\renewenvironment{theglossary}                                    % - 2-column style
+	{\begin{longtable}{@{}p{2cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}
+			{\end{longtable}}
+}
+
+% List of Appendices
+\newlistof{appendixentry}{loa}{}
+\newcommand{\listofappendices}{%
+	\addcontentsline{toc}{chapter}{\listofappendicesname}%
+	\begingroup
+	\setlength{\cftbeforeappendixentryskip}{0pt}
+	\listofappendixentry
+	\endgroup
+}
+
+% Appendices
+\newcommand{\appendixentry}[1]{%
+	\addcontentsline{loa}{appendixentry}{#1}%
+}
+
+% Bibliography
+\usepackage[
+	backend=biber,
+	style=authoryear
+]{biblatex}
+\addbibresource{references/example.bib}
+
+% Page number
+\setkomafont{pagenumber}{\normalfont\fontsize{9}{12}\selectfont}
+\setlength{\footskip}{7mm}

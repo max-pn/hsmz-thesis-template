@@ -1,0 +1,46 @@
+%
+% @file           image.tex 
+% @description    Reusable image/figure APA-style helper
+%
+% @usage          \insertimage{path}{Title}{Note}
+%                 \insertimage[width]{path}{Title}{Note}
+%                 \insertimage[width]{path}{Title}{Note}[Short LOF title]
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
+\RequirePackage{graphicx}
+\RequirePackage{xparse}
+\RequirePackage{caption}
+
+
+\NewDocumentCommand{\insertimage}{ O{\linewidth} m m m o }{%
+	\begin{figure}[htbp]
+		\raggedright
+
+		\captionsetup{%
+			position=top,
+			format=plain,
+			justification=raggedright,
+			singlelinecheck=false,
+			labelfont=bf,
+			textfont=it,
+			labelsep=newline
+		}%
+
+		\IfValueTF{#5}
+		{\caption[#5]{#3}}
+		{\caption{#3}}
+
+		\includegraphics[width=#1]{#2}\par
+
+		\captionsetup{%
+			position=bottom,
+			format=plain,
+			justification=raggedright,
+			singlelinecheck=false,
+			font=it
+		}%
+		\caption*{#4}
+	\end{figure}%
+}

@@ -1,7 +1,7 @@
 #--------------------------------------------------#
 # The following was added manually                 #
 #--------------------------------------------------#
-
+*work/
 
 #--------------------------------------------------#
 # The following was generated with gitignore.nvim: #
@@ -126,7 +126,7 @@ acs-*.bib
 *.sls
 
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
-# *.ist
+*.ist
 
 # gnuplot
 *.gnuplot

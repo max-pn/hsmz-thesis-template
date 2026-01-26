@@ -1,0 +1,49 @@
+%
+% @file           table.tex 
+% @description    Reusable table APA-style helper
+%
+% @usage          \inserttable{content}{Title}{Note}
+%                 \inserttable[max-width]{content}{Title}{Note}
+%                 \inserttable[max-width]{content}{Title}{Note}[Short LOF title]
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
+\RequirePackage{xparse}
+\RequirePackage{caption}
+\RequirePackage{adjustbox}
+
+\NewDocumentCommand{\inserttable}{ O{\linewidth} +m m m o }{%
+	\begin{table}[htbp]
+		\raggedright
+
+		\captionsetup{%
+			position=top,
+			format=plain,
+			justification=raggedright,
+			singlelinecheck=false,
+			labelfont=bf,
+			textfont=it,
+			labelsep=newline
+		}%
+
+		\IfValueTF{#5}
+		{\caption[#5]{#3}}
+		{\caption{#3}}
+
+		\vspace{0.5\baselineskip}
+
+		\begin{adjustbox}{max width=#1}
+			#2
+		\end{adjustbox}\par
+
+		\captionsetup{%
+			position=bottom,
+			format=plain,
+			justification=raggedright,
+			singlelinecheck=false,
+			font=it
+		}%
+		\caption*{#4}
+	\end{table}%
+}

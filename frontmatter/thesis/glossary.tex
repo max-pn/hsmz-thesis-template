@@ -1,0 +1,29 @@
+%
+% @file           glossary.tex 
+% @description    Glossary for thesis pdf. 
+%
+% @usage          Update all todo's and note's to your liking and compile to view pdf.
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
+%  NOTE: run `makeglossaries <file.tex>` to refresh .glo file
+
+\addchap{Glossar}
+
+%  TODO: add own glossary entries
+\newglossaryentry{latex}{
+	name = {latex},
+	description = {LaTeX ist eine Dokument-Beschreibungssprache}
+}
+
+%  NOTE: (optional) add manually or use in text to be included in glossary
+\glsadd{latex}
+
+%  NOTE: use with \gls{<key>} in doc
+
+\printglossary[
+	type=main,
+	style=hsmz-glossary,
+	title=
+]

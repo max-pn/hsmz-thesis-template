@@ -1,0 +1,30 @@
+%
+% @file           acronyms.tex 
+% @description    Acronyms list for thesis pdf. 
+%
+% @usage          Update all todo's and note's to your liking and compile to view pdf.
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
+%  NOTE: run `makeglossaries <file.tex>` in your terminal to refresh .glo file
+
+\addchap{Abkürzungsverzeichnis}
+
+%  TODO: add own acronyms
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{ui}{UI}{User Interface}
+\newacronym{ux}{UX}{User Experience}
+
+%  NOTE: (optional) add manually or use in text to be included in glossary
+\glsadd{api}
+\glsadd{ui}
+\glsadd{ux}
+
+%  NOTE: use with \gls{<key>} in doc
+
+\printglossary[
+	type=\acronymtype,
+	style=hsmz-glossary,
+	title=
+]

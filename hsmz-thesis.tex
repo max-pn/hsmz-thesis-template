@@ -1,7 +1,9 @@
 %
-% @project        HSMZ THESIS TEMPLATE
+% @file           hsmz-thesis.tex 
 % @description    Use this template for deliverables at Hochschule Mainz - University of Applied Sciences.
-%                 Use this file to compile the thesis pdf
+%                 Use this file to compile the thesis pdf.
+%
+% @usage          Update all TODO's and NOTE's to your liking and compile to view PDF.
 %
 % @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
 %
@@ -12,21 +14,43 @@
   oneside               %   - one-sided print
 ]{scrreprt}
 
-\input{config/settings.tex}
 \input{config/metadata.tex}
+\input{config/settings.tex}
 
 \begin{document}
 
 % Frontmatter
 \pagenumbering{gobble}
 \input{frontmatter/thesis/titlepage.tex}
-\cleardoublepage
-
 \input{frontmatter/thesis/declaration.tex}
-\cleardoublepage
-
 \input{frontmatter/thesis/abstract.tex}
 \cleardoublepage
 
+% Lists of contents
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\input{frontmatter/thesis/tableofcontents.tex}
+\input{frontmatter/thesis/listoffigures.tex}
+\input{frontmatter/thesis/listoftables.tex}
+\input{frontmatter/thesis/acronyms.tex}
+\input{frontmatter/thesis/glossary.tex}
+\cleardoublepage
+
+% Content
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\input{content/thesis/01_chapter.tex}
+\input{content/thesis/02_chapter.tex}
+\input{content/thesis/03_chapter.tex}
+\input{config/wordcount.tex}
+\cleardoublepage
+
+% References
+\pagenumbering{Roman}
+\setcounter{page}{6}
+\input{backmatter/thesis/bibliography.tex}
+\input{backmatter/thesis/listofreferences.tex}
+\input{backmatter/thesis/listofappendices.tex}
+\input{appendices/appendices.tex}
 
 \end{document}
