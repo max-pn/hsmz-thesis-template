@@ -1,8 +1,52 @@
 %
-% @project        HSMZ THESIS TEMPLATE
+% @file           hsmz-expose.tex 
 % @description    Use this template for deliverables at Hochschule Mainz - University of Applied Sciences.
-%                 Use this file to compile the exposé pdf 
+%                 Use this file to compile the exposé pdf.
+%
+% @usage          Update all TODO's and NOTE's to your liking and compile to view PDF.
+%                  TODO: Delete this file if your deliverable does not require an exposé to it.
 %
 % @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
 %
 
+\documentclass[         % Document setup:
+  11pt,                 %   - 11pt font size
+  a4paper,              %   - A4 paper dimensions
+  oneside               %   - one-sided print
+]{scrreprt}
+
+\input{config/metadata.tex}
+\input{config/settings.tex}
+
+\begin{document}
+
+% Frontmatter
+\pagenumbering{gobble}
+\input{frontmatter/expose/titlepage.tex}
+\cleardoublepage
+
+% Lists of contents
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\input{frontmatter/tableofcontents.tex}
+\input{frontmatter/listoffigures.tex}
+\input{frontmatter/listoftables.tex}
+\input{frontmatter/acronyms.tex}
+\cleardoublepage
+
+% Content
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\input{content/expose/01_Ausgangssituation.tex}
+\input{content/expose/02_Zielsetzung.tex}
+\input{content/expose/03_Vorgehensweise.tex}
+\input{content/expose/04_Gliederung.tex}
+\input{content/expose/05_Zeitplan.tex}
+\cleardoublepage
+
+% Backmatter
+\pagenumbering{Roman}
+\setcounter{page}{5}
+\input{backmatter/bibliography.tex}
+
+\end{document}

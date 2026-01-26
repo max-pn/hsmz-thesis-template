@@ -1,0 +1,71 @@
+%
+% @file           titlepage.tex 
+% @description    Title page for exposé pdf. 
+%
+% @usage          Update all todo's and note's to your liking and compile to view pdf.
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
+\begin{titlepage}
+	\includesvg[height=1.6cm]{./assets/images/hsmz-heading.svg}
+
+	\vspace{2.5cm}
+
+	\centering
+	{\bfseries\fontsize{16}{18}\selectfont
+		\thesisType\par
+	}
+	{\mdseries\fontsize{14}{18}\selectfont
+		\studyProgram\par
+	}
+
+	\vspace{1.5\baselineskip}
+
+	{\bfseries\fontsize{16}{18}\selectfont
+		\thesisTitle\par
+	}
+
+	\vspace{1.5\baselineskip}
+
+	{\mdseries\fontsize{14}{12}\selectfont
+		\uniName\par
+		\uniSub\par
+		\faculty\par
+	}
+
+	\vspace{3cm}
+
+	{\mdseries\fontsize{12}{10}\selectfont
+		\newlength{\leftshift}
+		\setlength{\leftshift}{0.5em}
+
+		\newlength{\colgap}
+		\setlength{\colgap}{1.2em}
+
+		\newlength{\rightcolw}
+		\setlength{\rightcolw}{\dimexpr0.5\linewidth-\colgap\relax}
+
+		\noindent\hfill%
+		\begin{tabular}{
+			@{}
+			>{\hspace*{-\leftshift}}l<{\hspace*{\leftshift}} % shift text, keep width
+			@{\hspace{\colgap}}
+			>{\raggedright\arraybackslash}p{\rightcolw}
+			@{}
+			}
+			Vorgelegt von:  & \authorName           \\[0.5em]
+			                & \authorAddress        \\[0.5em]
+			Matrikelnummer: & \matriculation        \\[0.5em]
+			Vorgelegt bei:  & \supervisor           \\[0.5em]
+			Eingereicht am: & \exposeSubmissionDate \\
+		\end{tabular}
+	}
+
+	\vfill
+
+	\raggedright
+	\includesvg[height=0.86cm]{./assets/images/hsmz-footer.svg}
+
+\end{titlepage}
+
