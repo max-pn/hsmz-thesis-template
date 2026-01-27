@@ -1,1 +1,1 @@
-# HSMZ Thesis Template
+# Bachelorthesis
