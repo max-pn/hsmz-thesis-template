@@ -45,6 +45,7 @@
 
 % Hyperlinks in PDF
 \usepackage[hidelinks]{hyperref}
+\urlstyle{same}
 % \usepackage{hyperref}
 
 % Chapter-Heading levels
@@ -172,6 +173,7 @@
 	style=authoryear
 ]{biblatex}
 \addbibresource{references/example.bib} %  TODO: change path to actual .bib reference file
+\renewcommand*{\bibfont}{\normalfont}
 
 % Page number
 \setkomafont{pagenumber}{\normalfont\fontsize{9}{12}\selectfont}
