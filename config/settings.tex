@@ -55,6 +55,11 @@
 \usepackage[hidelinks]{hyperref}
 % \usepackage{hyperref}
 
+\AtBeginDocument{%
+	\renewcommand{\sectionautorefname}{\sectionreflabel} %  TODO: set desired ref label in metadata.tex
+	\renewcommand{\subsectionautorefname}{\subsectionreflabel} %  TODO: set desired ref label in metadata.tex
+}
+
 % Chapter-Heading levels
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
