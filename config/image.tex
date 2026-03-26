@@ -2,9 +2,12 @@
 % @file           image.tex 
 % @description    Reusable image/figure APA-style helper
 %
-% @usage          \insertimage{path}{Title}{Note}
-%                 \insertimage[width]{path}{Title}{Note}
-%                 \insertimage[width]{path}{Title}{Note}[Short LOF title]
+% @usage          \insertimage{path}{Title}{Label}
+%                 \insertimage{path}{Title}{Label}[Note]
+%                 \insertimage{path}{Title}{Label}[Note][Short LOF title]
+%                 \insertimage[width]{path}{Title}{Label}
+%                 \insertimage[width]{path}{Title}{Label}[Note]
+%                 \insertimage[width]{path}{Title}{Label}[Note][Short LOF title]
 %
 % @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
 %
@@ -14,8 +17,8 @@
 \RequirePackage{caption}
 
 
-\NewDocumentCommand{\insertimage}{ O{\linewidth} m m m o }{%
-	\begin{figure}[htbp]
+\NewDocumentCommand{\insertimage}{ O{\linewidth} m m m o o}{%
+	\begin{figure}[H]
 		\raggedright
 
 		\captionsetup{%
@@ -25,22 +28,28 @@
 			singlelinecheck=false,
 			labelfont=bf,
 			textfont=it,
-			labelsep=newline
+			labelsep=newline,
+			font=apa-caption-font
 		}%
 
-		\IfValueTF{#5}
-		{\caption[#5]{#3}}
+		\IfValueTF{#6}
+		{\caption[#6]{#3}}
 		{\caption{#3}}
+
+		#4 % write \label{} in the \inserttable{} call not here, so lsp recognizes it and suggests it for usage
 
 		\includegraphics[width=#1]{#2}\par
 
-		\captionsetup{%
-			position=bottom,
-			format=plain,
-			justification=raggedright,
-			singlelinecheck=false,
-			font=normalfont
-		}%
-		\caption*{\textit{\figureAnnotation.}\ \normalfont #4}
+		\IfValueT{#5}{%
+			\captionsetup{%
+				position=bottom,
+				format=plain,
+				justification=raggedright,
+				singlelinecheck=false,
+				font=normalfont
+			}%
+			\caption*{\textit{\figureAnnotation.}\ \normalfont #5}
+		}
+
 	\end{figure}%
 }
