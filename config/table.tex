@@ -2,9 +2,12 @@
 % @file           table.tex 
 % @description    Reusable table APA-style helper
 %
-% @usage          \inserttable{content}{Title}{Note}
-%                 \inserttable[max-width]{content}{Title}{Note}
-%                 \inserttable[max-width]{content}{Title}{Note}[Short LOF title]
+% @usage          \inserttable{content}{Title}{Label}
+%                 \inserttable{content}{Title}{Label}[Note]
+%                 \inserttable{content}{Title}{Label}[Note][Short LOF title]
+%                 \inserttable[max-width]{content}{Title}{Label}
+%                 \inserttable[max-width]{content}{Title}{Label}[Note]
+%                 \inserttable[max-width]{content}{Title}{Label}[Note][Short LOF title]
 %
 % @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
 %
@@ -13,8 +16,8 @@
 \RequirePackage{caption}
 \RequirePackage{adjustbox}
 
-\NewDocumentCommand{\inserttable}{ O{\linewidth} +m m m o }{%
-	\begin{table}[htbp]
+\NewDocumentCommand{\inserttable}{ O{\linewidth} +m m m o o }{%
+	\begin{table}[H]
 		\raggedright
 
 		\captionsetup{%
@@ -24,12 +27,15 @@
 			singlelinecheck=false,
 			labelfont=bf,
 			textfont=it,
-			labelsep=newline
+			labelsep=newline,
+			font=apa-caption-font
 		}%
 
-		\IfValueTF{#5}
-		{\caption[#5]{#3}}
+		\IfValueTF{#6}
+		{\caption[#6]{#3}}
 		{\caption{#3}}
+
+		#4 % write \label{} in the \inserttable{} call not here, so lsp recognizes it and suggests it for usage
 
 		\vspace{0.5\baselineskip}
 
@@ -37,13 +43,15 @@
 			#2
 		\end{adjustbox}\par
 
-		\captionsetup{%
-			position=bottom,
-			format=plain,
-			justification=raggedright,
-			singlelinecheck=false,
-			font=normalfont
+		\IfValueT{#5}{%
+			\captionsetup{%
+				position=bottom,
+				format=plain,
+				justification=raggedright,
+				singlelinecheck=false,
+				font=normalfont
+			}%
+			\caption*{\textit{\tableAnnotation.}\ \normalfont #5}
 		}%
-		\caption*{\textit{\tableAnnotation.}\ \normalfont #4}
 	\end{table}%
 }
