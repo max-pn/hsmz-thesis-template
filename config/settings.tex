@@ -126,6 +126,8 @@
 % Figures
 \input{config/image.tex}
 
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
 \renewcommand{\thefigure}{\arabic{figure}} % global figure numbering, not chapter-wise
 
 % List of Tables
