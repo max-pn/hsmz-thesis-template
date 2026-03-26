@@ -12,4 +12,11 @@
 %  NOTE: general style is configured in config/settings.tex
 
 %  NOTE: when adding images to text use \insertimage from config/image.tex as APA-template
+
+\vspace{\baselineskip}
+\begingroup
+\makeatletter
+\let\addvspace\@gobble
+\makeatother
 \listoftoc*{lof}
+\endgroup
