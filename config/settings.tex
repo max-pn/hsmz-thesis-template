@@ -161,15 +161,26 @@
 \usepackage{glossary-longragged}
 \usepackage{longtable}
 
-\newglossarystyle{hsmz-glossary}{                                   % custom style for glossaries
+\newglossarystyle{hsmz-acronyms}{                                     % custom style for acronyms 
 	\setglossarystyle{longragged}
-	\renewcommand*{\glsgroupskip}{}                                   % - no grouping in glossaries
-	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}      % - no preamble for glossaries
-	\renewcommand*{\glossarysection}[2][]{}                           % - no chapter headings for glossaries 
-	\renewcommand*{\glspostdescription}{}                             % - no punctuation after glossary descriptions
-	\renewenvironment{theglossary}                                    % - 2-column style
-	{\begin{longtable}{@{}p{5cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}
-			{\end{longtable}}
+	\renewcommand*{\glsgroupskip}{}                                     % - no grouping in glossaries
+	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}        % - no preamble for glossaries
+	\renewcommand*{\glossarysection}[2][]{}                             % - no chapter headings for glossaries 
+	\renewcommand*{\glspostdescription}{}                               % - no punctuation after glossary descriptions
+	\renewenvironment{theglossary}                                      % - 2-column style
+	{\begin{longtable}{@{}p{3cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}  %  TODO: adjust spacing if necessary 
+	{\end{longtable}}
+}
+
+\newglossarystyle{hsmz-glossary}{                                     % custom style for glossaries
+	\setglossarystyle{longragged}
+	\renewcommand*{\glsgroupskip}{}                                     % - no grouping in glossaries
+	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}        % - no preamble for glossaries
+	\renewcommand*{\glossarysection}[2][]{}                             % - no chapter headings for glossaries 
+	\renewcommand*{\glspostdescription}{}                               % - no punctuation after glossary descriptions
+	\renewenvironment{theglossary}                                      % - 2-column style
+	{\begin{longtable}{@{}p{4cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}  %  TODO: adjust spacing if necessary
+	{\end{longtable}}
 }
 
 \glsaddkey{alternative}%
