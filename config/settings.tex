@@ -50,6 +50,7 @@
 \usepackage{soul}
 \soulregister\parencite7
 \soulregister\gls7
+\soulregister\chapterwordcount7
 
 % Hyperlinks in PDF
 \usepackage[hidelinks]{hyperref}
@@ -222,3 +223,10 @@
 % Page number
 \setkomafont{pagenumber}{\normalfont\fontsize{9}{12}\selectfont}
 \setlength{\footskip}{7mm}
+
+% Wordcount macro for chapters
+\usepackage{currfile}
+\usepackage{catchfile}
+\usepackage{shellesc}
+
+\input{config/wordcountchapter.tex}

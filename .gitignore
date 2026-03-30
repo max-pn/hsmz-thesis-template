@@ -2,6 +2,7 @@
 # The following was added manually                 #
 #--------------------------------------------------#
 # *work/
+*.wc
 
 #--------------------------------------------------#
 # The following was generated with gitignore.nvim: #

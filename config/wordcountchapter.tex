@@ -1,0 +1,23 @@
+%
+% @file           wordcountchapter.tex 
+% @description    Helper macro to count words of specific chapters while
+%                 writing
+%
+% @usage          insert \wordcountchapter into the .tex file you want to 
+%                 count words of
+%
+% @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
+%
+
+\newcommand{\wordcountchapter}{%
+	\begingroup
+	\edef\wcfile{\jobname-\currfilebase.wc}%
+	\ShellEscape{texcount -1 -sum -merge "\currfilepath" > "\wcfile"}%
+	\IfFileExists{\wcfile}{%
+		\CatchFileDef{\chapterwordcount}{\wcfile}{}%
+		\hl{chap wordcount: \chapterwordcount words}%
+	}{%
+		\textbf{!error counting words}%
+	}%
+	\endgroup
+}
