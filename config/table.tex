@@ -1,57 +1,56 @@
 %
-% @file           table.tex 
-% @description    Reusable table APA-style helper
+% @file           table.tex
+% @description    Reusable longtable APA-style helper
 %
-% @usage          \inserttable{content}{Title}{Label}
-%                 \inserttable{content}{Title}{Label}[Note]
-%                 \inserttable{content}{Title}{Label}[Note][Short LOF title]
-%                 \inserttable[max-width]{content}{Title}{Label}
-%                 \inserttable[max-width]{content}{Title}{Label}[Note]
-%                 \inserttable[max-width]{content}{Title}{Label}[Note][Short LOF title]
+% @usage          \inserttable{columns}{content}{Title}{Label}
+%                 \inserttable{columns}{content}{Title}{Label}[Note]
+%                 \inserttable{columns}{content}{Title}{Label}[Note]
 %
 % @copyright      Copyright (c) 2026 max-pn. All Rights Reserved.
 %
 
 \RequirePackage{xparse}
 \RequirePackage{caption}
-\RequirePackage{adjustbox}
+\RequirePackage{longtable}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{ragged2e}
+\RequirePackage{setspace}
 
-\NewDocumentCommand{\inserttable}{ O{\linewidth} +m m m o o }{%
-	\begin{table}[H]
-		\raggedright
+\NewDocumentCommand{\inserttable}{ m +m m m o }{%
+	\begingroup
 
+	\captionsetup{%
+		position=top,
+		format=plain,
+		justification=raggedright,
+		singlelinecheck=false,
+		labelfont=bf,
+		textfont=it,
+		labelsep=newline,
+		font=apa-caption-font
+	}%
+
+	\setlength\LTleft{0pt}%
+	\setlength\LTright{0pt}%
+	\setlength\LTpost{0pt}%
+
+	\begin{longtable}{#1}
+		\caption{#3}#4 \\
+		#2
+	\end{longtable}
+
+	\IfValueT{#5}{%
 		\captionsetup{%
-			position=top,
+			position=bottom,
 			format=plain,
 			justification=raggedright,
 			singlelinecheck=false,
-			labelfont=bf,
-			textfont=it,
-			labelsep=newline,
-			font=apa-caption-font
+			font=normalfont
 		}%
+		\captionof*{table}{\textit{\tableAnnotation.}\ \normalfont #5}%
+		\vspace{0.75\baselineskip}%
+	}%
 
-		\IfValueTF{#6}
-		{\caption[#6]{#3}}
-		{\caption{#3}}
-
-		#4 % write \label{} in the \inserttable{} call not here, so lsp recognizes it and suggests it for usage
-
-		\vspace{0.5\baselineskip}
-
-		\begin{adjustbox}{max width=#1}
-			#2
-		\end{adjustbox}\par
-
-		\IfValueT{#5}{%
-			\captionsetup{%
-				position=bottom,
-				format=plain,
-				justification=raggedright,
-				singlelinecheck=false,
-				font=normalfont
-			}%
-			\caption*{\textit{\tableAnnotation.}\ \normalfont #5}
-		}%
-	\end{table}%
+	\endgroup
 }

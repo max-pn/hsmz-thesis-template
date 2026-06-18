@@ -39,11 +39,15 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{xltabular}
+\usepackage{longtable}
 \usepackage{threeparttable}
 \usepackage{svg}
 \usepackage{amssymb}
 \usepackage[inline]{enumitem}
 \usepackage{float}
+\usepackage{ragged2e}
+\usepackage{multirow}
 
 % Text highlighting
 \usepackage{color}
@@ -55,6 +59,12 @@
 % Hyperlinks in PDF
 \usepackage[hidelinks]{hyperref}
 % \usepackage{hyperref}
+% \hypersetup{
+% 	colorlinks=true,
+% 	linkcolor=blue,
+% 	citecolor=blue,
+% 	urlcolor=blue
+% }
 
 \AtBeginDocument{%
 	\renewcommand{\sectionautorefname}{\sectionreflabel} %  TODO: set desired ref label in metadata.tex
@@ -161,25 +171,14 @@
 \usepackage{glossary-longragged}
 \usepackage{longtable}
 
-\newglossarystyle{hsmz-acronyms}{                                     % custom style for acronyms 
+\newglossarystyle{hsmz-glossary}{                                   % custom style for glossaries
 	\setglossarystyle{longragged}
-	\renewcommand*{\glsgroupskip}{}                                     % - no grouping in glossaries
-	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}        % - no preamble for glossaries
-	\renewcommand*{\glossarysection}[2][]{}                             % - no chapter headings for glossaries 
-	\renewcommand*{\glspostdescription}{}                               % - no punctuation after glossary descriptions
-	\renewenvironment{theglossary}                                      % - 2-column style
-	{\begin{longtable}{@{}p{3cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}  %  TODO: adjust spacing if necessary 
-	{\end{longtable}}
-}
-
-\newglossarystyle{hsmz-glossary}{                                     % custom style for glossaries
-	\setglossarystyle{longragged}
-	\renewcommand*{\glsgroupskip}{}                                     % - no grouping in glossaries
-	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}        % - no preamble for glossaries
-	\renewcommand*{\glossarysection}[2][]{}                             % - no chapter headings for glossaries 
-	\renewcommand*{\glspostdescription}{}                               % - no punctuation after glossary descriptions
-	\renewenvironment{theglossary}                                      % - 2-column style
-	{\begin{longtable}{@{}p{4cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}  %  TODO: adjust spacing if necessary
+	\renewcommand*{\glsgroupskip}{}                                   % - no grouping in glossaries
+	\renewcommand*{\glossarypreamble}{\setlength{\parskip}{0pt}}      % - no preamble for glossaries
+	\renewcommand*{\glossarysection}[2][]{}                           % - no chapter headings for glossaries 
+	\renewcommand*{\glspostdescription}{}                             % - no punctuation after glossary descriptions
+	\renewenvironment{theglossary}                                    % - 2-column style
+	{\begin{longtable}{@{}p{5cm}p{\dimexpr\linewidth-2.5cm\relax}@{}}}
 	{\end{longtable}}
 }
 
@@ -191,6 +190,13 @@
 {\Glsalternative}%
 {\GLSalternative}%
 
+\glsaddkey{alternativeplural}%
+{}%
+{\glsentryalternativeplural}%
+{\Glsentryalternativeplural}%
+{\glsalternativeplural}%
+{\Glsalternativeplural}%
+{\GLSalternativeplural}%
 
 \glsaddkey{genitive}%
 {}%
