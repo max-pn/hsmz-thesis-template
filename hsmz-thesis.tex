@@ -20,6 +20,7 @@
 \begin{document}
 
 % Frontmatter
+%TC:ignore
 \pagenumbering{gobble}
 \input{frontmatter/thesis/titlepage.tex}
 \input{frontmatter/thesis/declaration.tex}
@@ -35,6 +36,7 @@
 \input{frontmatter/acronyms.tex}
 \input{frontmatter/thesis/glossary.tex}
 \cleardoublepage
+%TC:endignore
 
 % Content
 \pagenumbering{arabic}
@@ -46,11 +48,15 @@
 \cleardoublepage
 
 % References
+%TC:ignore
 \pagenumbering{Roman}
 \setcounter{page}{6}
 \input{backmatter/thesis/bibliography.tex}
 \input{backmatter/thesis/listofreferences.tex}
 \input{backmatter/thesis/listofappendices.tex}
+
+\renewcommand{\chapterautorefname}{\appendixautorefname}
 \input{appendices/appendices.tex}
+%TC:endignore
 
 \end{document}
